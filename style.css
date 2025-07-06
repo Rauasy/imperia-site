@@ -1,3 +1,4 @@
+/* style.css */
 body {
     margin: 0;
     font-family: 'Georgia', serif;
@@ -8,6 +9,7 @@ body {
     min-height: 100vh;
     padding: 2rem;
 }
+
 .stars {
     position: fixed;
     top: 0;
@@ -18,16 +20,63 @@ body {
     z-index: 1;
     overflow: hidden;
 }
+
 .star {
     position: absolute;
     background-color: white;
     border-radius: 50%;
     animation: twinkle 5s infinite ease-in-out;
 }
+
 @keyframes twinkle {
     0%, 100% { opacity: 0.3; transform: scale(0.8); }
     50% { opacity: 1; transform: scale(1.1); }
 }
+
+.falling-star {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 6px white);
+    animation: falling linear forwards;
+    opacity: 0;
+}
+
+@keyframes falling {
+    0% { transform: translate(0, 0); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translate(var(--random-x), 100vh); opacity: 0; }
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 3rem;
+    letter-spacing: 2px;
+    color: #d4af37;
+    text-shadow: 0 0 10px #d4af37aa;
+}
+
+details {
+    background: rgba(25, 25, 40, 0.85);
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+summary {
+    font-size: 1.6rem;
+    cursor: pointer;
+    outline: none;
+    color: #d4af37;
+    text-shadow: 0 0 6px #d4af37bb;
+}
+
 .night {
     margin-top: 1rem;
     padding: 0.8rem 1rem;
@@ -36,15 +85,32 @@ body {
     border-radius: 10px;
     color: #e0e0cc;
 }
+
 .night summary {
     font-size: 1.3rem;
     color: #d4af37;
     text-shadow: 0 0 6px #d4af37bb;
 }
+
 .night-content {
     margin-top: 1rem;
     font-size: 1rem;
     line-height: 1.6;
     white-space: pre-wrap;
     color: #eee8aa;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    body { padding: 1rem; }
+    h1 { font-size: 2rem; }
+    summary { font-size: 1.2rem; }
+    .night { padding: 0.5rem; }
+    .night-content { font-size: 0.9rem; }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 1.5rem; }
+    details { padding: 0.5rem; }
+    .night { padding: 0.5rem; }
 }
