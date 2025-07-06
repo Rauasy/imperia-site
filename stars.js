@@ -1,4 +1,6 @@
+// stars.js
 const starContainer = document.querySelector('.stars');
+
 for (let i = 0; i < 250; i++) {
     const star = document.createElement('div');
     star.classList.add('star');
@@ -13,3 +15,28 @@ for (let i = 0; i < 250; i++) {
     }
     starContainer.appendChild(star);
 }
+
+function createFallingStar() {
+    const star = document.createElement('div');
+    star.classList.add('falling-star');
+    star.style.left = Math.random() * 100 + 'vw';
+    star.style.top = (Math.random() * 20) + 'vh';
+    star.style.setProperty('--random-x', (Math.random() - 0.5) * 300 + 'px');
+    const duration = 1 + Math.random() * 2;
+    star.style.animationDuration = duration + 's';
+    star.style.opacity = Math.random() * 0.8 + 0.2;
+    const size = 3 + Math.random() * 2;
+    star.style.width = size + 'px';
+    star.style.height = size + 'px';
+    starContainer.appendChild(star);
+    setTimeout(() => {
+        star.remove();
+    }, duration * 1000);
+}
+
+function startFallingStars() {
+    createFallingStar();
+    setTimeout(startFallingStars, 300 + Math.random() * 1200);
+}
+
+setTimeout(startFallingStars, 500);
