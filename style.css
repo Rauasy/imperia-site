@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background-color: #0b0c1a;
+    color: #e0d8a0;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+    padding: 2rem;
+}
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    animation: twinkle 5s infinite ease-in-out;
+}
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+.night {
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+    background: rgba(20, 20, 40, 0.7);
+    border: 1px solid #444;
+    border-radius: 10px;
+    color: #e0e0cc;
+}
+.night summary {
+    font-size: 1.3rem;
+    color: #d4af37;
+    text-shadow: 0 0 6px #d4af37bb;
+}
+.night-content {
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    color: #eee8aa;
+}
